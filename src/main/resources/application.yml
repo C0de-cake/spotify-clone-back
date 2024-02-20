@@ -1,0 +1,43 @@
+logging:
+  level:
+    ROOT: info
+    org.hibernate.SQL: DEBUG
+    fr.codecake.spotifyclone: DEBUG
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spotify-clone
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://${postgres_url}:5432/${postgres_db}
+    username: ${postgres_username}
+    password: ${postgres_password}
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        default_schema: spotify_clone
+  liquibase:
+    contexts: dev
+    change-log: classpath:db/changelog/master.xml
+    default-schema: spotify_clone
+    enabled: true
+  #    drop-first: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+server:
+  port: 8080
