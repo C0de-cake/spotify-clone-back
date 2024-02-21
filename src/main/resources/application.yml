@@ -41,3 +41,9 @@ spring:
       max-request-size: 100MB
 server:
   port: 8080
+
+okta:
+  oauth2:
+    issuer: https://spotify-clone.jp.auth0.com/
+    client-id: ${auth0_client_id}
+    client-secret: ${auth0_client_secret}
