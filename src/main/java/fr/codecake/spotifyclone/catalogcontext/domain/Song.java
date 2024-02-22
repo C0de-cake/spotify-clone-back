@@ -18,7 +18,7 @@ public class Song implements Serializable {
 
     @UuidGenerator
     @Column(name = "public_id", nullable = false)
-    private UUID publidId;
+    private UUID publicId;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -26,8 +26,9 @@ public class Song implements Serializable {
     @Column(name = "author", nullable = false)
     private String author;
 
+    @Lob
     @Column(name = "cover", nullable = false)
-    private String cover;
+    private byte[] cover;
 
     @Column(name = "cover_content_type", nullable = false)
     private String coverContentType;
@@ -40,12 +41,12 @@ public class Song implements Serializable {
         this.id = id;
     }
 
-    public UUID getPublidId() {
-        return publidId;
+    public UUID getPublicId() {
+        return publicId;
     }
 
-    public void setPublidId(UUID publidId) {
-        this.publidId = publidId;
+    public void setPublicId(UUID publidId) {
+        this.publicId = publidId;
     }
 
     public String getTitle() {
@@ -64,11 +65,11 @@ public class Song implements Serializable {
         this.author = author;
     }
 
-    public String getCover() {
+    public byte[] getCover() {
         return cover;
     }
 
-    public void setCover(String cover) {
+    public void setCover(byte[] cover) {
         this.cover = cover;
     }
 
