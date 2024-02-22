@@ -2,6 +2,7 @@ package fr.codecake.spotifyclone.catalogcontext.application;
 
 import fr.codecake.spotifyclone.catalogcontext.application.dto.ReadSongInfoDTO;
 import fr.codecake.spotifyclone.catalogcontext.application.dto.SaveSongDTO;
+import fr.codecake.spotifyclone.catalogcontext.application.dto.SongContentDTO;
 import fr.codecake.spotifyclone.catalogcontext.application.mapper.SongContentMapper;
 import fr.codecake.spotifyclone.catalogcontext.application.mapper.SongMapper;
 import fr.codecake.spotifyclone.catalogcontext.domain.Song;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -50,5 +53,10 @@ public class SongService {
                 .stream()
                 .map(songMapper::songToReadSongInfoDTO)
                 .toList();
+    }
+
+    public Optional<SongContentDTO> getOneByPublicId(UUID publicId) {
+        Optional<SongContent> songByPublicId = songContentRepository.findOneBySongPublicId(publicId);
+        return songByPublicId.map(songContentMapper::songContentToSongContentDTO);
     }
 }
