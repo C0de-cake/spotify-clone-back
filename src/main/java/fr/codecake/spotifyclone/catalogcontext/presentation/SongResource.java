@@ -74,4 +74,9 @@ public class SongResource {
                 .orElseGet(() -> ResponseEntity
                         .of(ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "UUID Unknown")).build());
     }
+
+    @GetMapping("/songs/search")
+    public ResponseEntity<List<ReadSongInfoDTO>> search(@RequestParam String term) {
+        return ResponseEntity.ok(songService.search(term));
+    }
 }
