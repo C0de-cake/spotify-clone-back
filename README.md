@@ -2,7 +2,7 @@
 
 Spring boot backend of the spotify clone
 
-[Video tutorial](https://www.youtube.com/watch?v=ySn8vuofL9o)
+[Video tutorial](https://www.youtube.com/watch?v=FEQ9C9PfLLI)
 
 [Angular Frontend](https://github.com/C0de-cake/spotify-clone-front)
 
